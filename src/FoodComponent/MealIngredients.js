@@ -1,5 +1,4 @@
 import React from "react";
-import IngredientList from "./IngredientList";
 
 
 function MealIngredients (props) {

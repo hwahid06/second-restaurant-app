@@ -1,18 +1,25 @@
 import React from "react";
-
+import ActiveIngredients from "./ActiveIngredients";
+import DiscardedIngredients from "./DiscardedIngredients";
+import { Container, Row, Col } from "react-bootstrap";
 
 
 
 function IngredientList (props) {
     
 	return (
-		<div>
-			<h4>All Ingredients</h4>
-			{props.allIngredients.map(item => {
-				return( <div key= {`all-ingredients-${item}`}>{item}</div>
-			)
-			})}
-		</div>
+		<Container class='container'>
+			<Row className='row d-flex justify-content-center'>
+				<Col>
+					<ActiveIngredients activeIngredients={props.activeIngredients}
+					removeIngredient={props.removeIngredient} />
+				</Col>
+				<Col>
+					<DiscardedIngredients discardedIngredients={props.discardedIngredients}
+					restoreIngredient={props.restoreIngredient} />
+				</Col>
+			</Row>
+		</Container>
 	)
 }
 

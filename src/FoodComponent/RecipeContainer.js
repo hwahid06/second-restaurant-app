@@ -1,13 +1,11 @@
 import React from 'react'
-import MealIngredients from './MealIngredients';
 import CardList from './CardList';
 
 
 
 function RecipeContainer(props) {
-	console.log(props.recipes)
 	return (
-		<div>
+		<div className='d-flex flex-wrap'>
 			{props.recipes.map(item => {
 				return <CardList
 					recipes = {item.foodItem}
