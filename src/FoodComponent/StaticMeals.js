@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import RecipeContainer from './RecipeContainer';
 import recipeArr from './Data';
 import IngredientList from './IngredientList';
-import { getAllIngredients, getActiveRecipes } from './utils';
+import {
+	getAllIngredients,
+	getActiveRecipes,
+	getUpdatedActiveIngredients,
+	getUpdatedDiscardedIngredients,
+} from './utils'
 
 
 
@@ -15,28 +20,24 @@ function StaticMeals(props) {
 	function removeIngredient(event) {
 		const item = event.target.value;
 
-		const updatedActiveMeals = getActiveRecipes (activeIngredients, recipeArr)
-		console.log(updatedActiveMeals)
+		const updatedActiveIngredients = getUpdatedActiveIngredients(activeIngredients,item)
 
-		setActiveIngredients((prev) => {
-			return prev.filter(el => {
-				if (el === item) {
-					return false;
-				} else {
-					return true;
-				}
-			})
-		})
+		const updatedActiveMeals = getActiveRecipes (updatedActiveIngredients, recipeArr)
 		
-		setDiscardedIngredients((previous) => {
-			return [...previous, item]
-		})
+		setActiveIngredients(updatedActiveIngredients)
+		
+		
 
 		setActiveMeals(updatedActiveMeals)
 	}
 	
 	function restoreIngredient (event) {
 		const item = event.target.value;
+		const updatedDiscardedIngredients = getUpdatedDiscardedIngredients(activeIngredients, item)
+
+		const updatedActiveMeals = getActiveRecipes(updatedDiscardedIngredients,recipeArr)
+		
+
 		setDiscardedIngredients(prev => {
 			return prev.filter (el => {
 				if (el === item) {
@@ -45,11 +46,12 @@ function StaticMeals(props) {
 					return true;
 				}
 			})
-			
 		})
-		setActiveIngredients((prev) => {
-			return [...prev, item]
+
+		setDiscardedIngredients((previous) => {
+			return [...previous, item]
 		})
+		setActiveMeals(updatedActiveMeals)
 	}
 
 	return (

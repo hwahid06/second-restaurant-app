@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active-meal {
+  background-color: rgba(210, 255, 47, 0.744);
+}
+
+.non-active-meal {
+  background-color: none;
+}

@@ -9,7 +9,8 @@ function ActiveIngredients (props) {
 					return (
 						<div key={item}>
 							{item}
-							<button value={item} onClick={props.removeIngredient}>-</button>
+							<button value={item} onClick={props.onRemoveIngredient}>-</button>
+							
 						</div>
 					)
 				})}

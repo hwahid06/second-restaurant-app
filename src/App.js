@@ -1,12 +1,13 @@
 
-import StaticMeals from "./FoodComponent/StaticMeals";
+// import StaticMeals from "./FoodComponent/StaticMeals";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Index from "./FoodApp";
 
 function App() {
   return (
 		<div>
-			
-			<StaticMeals />
+			<Index />
+			{/* <StaticMeals /> */}
 		</div>
 	)
 }
